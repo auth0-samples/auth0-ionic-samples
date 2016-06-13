@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "commonjs",
+    "noEmitOnError": false,
+    "rootDir": ".",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": false,
+    "sourceRoot": "",
+    "inlineSourceMap": false,
+    "inlineSources": false
+  },
+  "files": [
+    "app/app.ts",
+    "app/auth0-variables.ts",
+    "app/pages/page1/page1.ts",
+    "app/pages/page2/page2.ts",
+    "app/pages/page3/page3.ts",
+    "app/pages/tabs/tabs.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compileOnSave": false
+}

@@ -1,0 +1,14 @@
+{
+  "name": "basic-sample",
+  "dependencies": {
+    "auth0-angular": "4.*",
+    "a0-angular-storage": ">= 0.0.13",
+    "angular-jwt": ">= 0.0.9"
+  },
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#v1.2.4"
+  },
+  "resolutions": {
+    "angular": ">= 1.0.8"
+  }
+}
