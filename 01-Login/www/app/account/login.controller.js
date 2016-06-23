@@ -10,10 +10,9 @@
   function LoginController(store, $scope, $state, auth) {
     var vm = this;
 
-    vm.login = login;
-    
-    function login() {
+    function doLogin() {
       auth.signin({
+        container: 'lock-container',
         authParams: {
           scope: 'openid offline_access',
           device: 'Mobile device'
@@ -30,6 +29,7 @@
       });
     }
 
+    doLogin();
   }
   
 } ());
