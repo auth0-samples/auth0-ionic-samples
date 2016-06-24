@@ -5,9 +5,9 @@
     .module('app')
     .controller('LoginController', LoginController)
 
-  LoginController.$inject = ['store', '$scope', '$state', 'auth'];
+  LoginController.$inject = ['$scope', '$state', 'auth', 'store'];
 
-  function LoginController(store, $scope, $state, auth) {
+  function LoginController($scope, $state, auth, store) {
     var vm = this;
 
     function doLogin() {
@@ -21,6 +21,7 @@
         // Success callback
         store.set('profile', profile);
         store.set('token', token);
+        store.set('accessToken', accessToken);
         store.set('refreshToken', refreshToken);
         
          $state.go("home");
