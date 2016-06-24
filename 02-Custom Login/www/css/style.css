@@ -1,0 +1,6 @@
+/* Empty. Add your own CSS if you like */
+.button-google,
+.button-google:hover {
+  background-color:#dd4b39;
+  color: white; 
+}
