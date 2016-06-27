@@ -1,0 +1,13 @@
+<ion-view view-title="Select Account to Add" ng-controller="LinkAccountController as vm">
+  <ion-content>
+    <div class="list">
+      
+       <a class="item item-icon-left item-icon-right" ng-repeat="provider in vm.providers" ng-click="vm.linkAccount(provider.value)">
+          <i class="icon {{ provider.icon }}"></i>
+          {{ provider.title }}
+          <i class="icon ion-chevron-right icon-accessory"></i>
+        </a>
+
+      <div>
+  </ion-content>
+</ion-view>

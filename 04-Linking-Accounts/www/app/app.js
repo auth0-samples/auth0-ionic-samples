@@ -63,6 +63,11 @@ angular.module('app', ['ionic', 'auth0', 'angular-storage', 'angular-jwt'])
         url: '/login',
         templateUrl: 'app/account/login.html'
       })
+
+      .state('link', { 
+        url: '/link',
+        templateUrl: 'app/account/linkAccount.html'
+      })
       ;
 
     authProvider.init({

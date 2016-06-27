@@ -12,12 +12,17 @@
 
         vm.auth = auth;
 
+        vm.linkAccount = linkAccount;
         vm.login = login;
         vm.logout = logout;
 
         $scope.$on("$ionicView.beforeEnter", function() {
             vm.profile = store.get('profile'); 
         });
+
+        function linkAccount() {
+            $state.go("link");
+        }
 
         function login() {
             $state.go("login");
