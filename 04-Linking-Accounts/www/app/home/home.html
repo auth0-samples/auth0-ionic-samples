@@ -1,0 +1,31 @@
+<ion-view view-title="Auth0 Ionic Quickstart" ng-controller="HomeController as vm">
+  <ion-content class="padding">
+    <div ng-hide="vm.auth.isAuthenticated">
+      <p>Welcome to the Auth0 Ionic Sample! Please log in:</p>
+      <button class="button button-full button-positive" ng-click="vm.login()">
+        Log In
+      </button>
+    </div>
+    <div ng-show="vm.auth.isAuthenticated">
+
+      <div class="list card">
+
+        <div class="item item-avatar">
+          <img src="{{ vm.profile.picture }}">
+          <h2>{{ vm.profile.name }}</h2>
+        </div>
+
+        <a class="item item-icon-left" ng-click="vm.linkAccount()">
+          <i class="icon ion-link"></i> Link Account 
+        </a>
+
+        <a class="item item-icon-left assertive" ng-click="vm.logout()">
+          <i class="icon ion-log-out"></i> Log Out
+        </a>
+
+      </div>
+
+
+    </div>
+  </ion-content>
+</ion-view>

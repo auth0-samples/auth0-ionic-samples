@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title></title>
+
+  <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+  <!-- ionic/angularjs js -->
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+  <!-- cordova script (this will be a 404 during development) -->
+  <script src="cordova.js"></script>
+
+  <!-- Auth0 Lock -->
+  <script src="lib/auth0-lock/build/auth0-lock.js"></script>
+  <!-- auth0-angular -->
+  <script src="lib/auth0-angular/build/auth0-angular.js"></script>
+  <!-- angular storage -->
+  <script src="lib/a0-angular-storage/dist/angular-storage.js"></script>
+  <!-- angular-jwt -->
+  <script src="lib/angular-jwt/dist/angular-jwt.js"></script>
+
+  <!-- your app's js -->
+  <script src="app/auth0.variables.js"></script>
+  <script src="app/app.js"></script>
+  <script src="app/home/home.controller.js"></script>
+  <script src="app/account/login.controller.js"></script>
+</head>
+
+<body ng-app="app">
+  <!--
+      The nav bar that will be updated as we navigate between views.
+    -->
+  <ion-nav-bar class="bar-stable">
+    <ion-nav-back-button>
+    </ion-nav-back-button>
+  </ion-nav-bar>
+  <!--
+      The views will be rendered in the <ion-nav-view> directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).
+    -->
+  <ion-nav-view></ion-nav-view>
+</body>
+
+</html>
