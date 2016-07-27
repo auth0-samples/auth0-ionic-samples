@@ -1,7 +1,5 @@
-# auth0-ionic-samples
+# Quickstart Sample for Ionic 1
 
-Auth0 ionic examples
+This repository contains the source code for the [Ionic 1 Quickstart](https://auth0.com/docs/quickstart/native/ionic)
 
-The example from the repo https://github.com/auth0/auth0-ionic needs to be moved to this one
-
-Please remember to use the same structure as https://github.com/auth0-samples/auth0-angularjs-sample
+Please see the Quickstart itself, or the Readme's in the individual folders for more information
