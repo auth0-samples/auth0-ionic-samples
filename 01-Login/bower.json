@@ -2,6 +2,7 @@
   "name": "HelloIonic",
   "private": "true",
   "dependencies": {
+    "auth0-lock": "9.2.2",
     "auth0-angular": "4.*",
     "a0-angular-storage": ">= 0.0.13",
     "angular-jwt": ">= 0.0.9"
