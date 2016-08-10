@@ -16,6 +16,9 @@ To run the application
 # Install the dependencies
 bower install
 
+# Get the plugins
+ionic state restore --plugins
+
 # Run
 ionic serve
 ```
