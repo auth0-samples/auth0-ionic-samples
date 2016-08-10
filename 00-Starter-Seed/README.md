@@ -9,5 +9,7 @@ To run this project
 ```bash
 bower install
 
+ionic state restore --plugins
+
 ionic serve
 ```
