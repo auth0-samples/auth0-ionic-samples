@@ -1,6 +1,7 @@
 # Common Ignores
 .vscode/
 .DS_Store
+.idea
 
 # Bower
 **/www/lib
