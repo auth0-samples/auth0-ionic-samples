@@ -1,6 +1,6 @@
 # Rules
 
-This example shows how to add work with `Auth0` rules, which are very usefull to extend functionality.
+This example shows how to work with `Auth0` rules, more information about them can be found [here](https://auth0.com/docs/rules).
 
 You can read a quickstart for this sample [here](https://auth0.com/docs/quickstart/native/ionic/05-rules). 
 
