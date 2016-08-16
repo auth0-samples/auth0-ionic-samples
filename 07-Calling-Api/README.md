@@ -1,7 +1,7 @@
 # Calling API
 
 This example shows how to make authenticated API calls using the JSON Web Token given by Auth0 in your Ionic application.
-You can read a quickstart for this sample [here](https://auth0.com/docs/quickstart/native/ionic/06-authorization). 
+You can read a quickstart for this sample [here](https://auth0.com/docs/quickstart/native/ionic/07-calling-apis). 
 
 ## Getting Started
 
