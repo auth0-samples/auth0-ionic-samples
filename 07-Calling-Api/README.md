@@ -1,7 +1,6 @@
-# Authorization
+# Calling API
 
-This example shows one of the ways of adding ***Authorization*** for a resource in your application.
-
+This example shows how to make authenticated API calls using the JSON Web Token given by Auth0 in your Ionic application.
 You can read a quickstart for this sample [here](https://auth0.com/docs/quickstart/native/ionic/06-authorization). 
 
 ## Getting Started
