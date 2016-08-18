@@ -7,11 +7,12 @@ This starter seed is a basic Ionic 1 application with the required Auth0 scripts
 To run this project
 
 ```bash
-ionic plugin add cordova-plugin-inappbrowser cordova-plugin-whitelist
-
+# Install the dependencies
 bower install
 
+# Get the plugins
 ionic state restore --plugins
 
+# Run
 ionic serve
 ```
