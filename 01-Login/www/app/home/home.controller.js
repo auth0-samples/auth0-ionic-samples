@@ -5,27 +5,22 @@
         .module('app')
         .controller('HomeController', HomeController)
 
-    HomeController.$inject = ['$state', 'auth', 'store'];
+    HomeController.$inject = ['$state', 'authService', 'store'];
 
-    function HomeController($state, auth, store) {
+    function HomeController($state, authService, store) {
         var vm = this;
 
-        vm.auth = auth;
+        vm.auth = authService;
 
         vm.login = login;
-        vm.logout = logout;
+        vm.logout = authService.logout;
 
         function login() {
             $state.go("login");
         }
 
         function logout() {
-            auth.signout();
-
-            store.remove('profile');
-            store.remove('token');
-            store.remove('accessToken');
-            store.remove('refreshToken');
+            authService.signout();
         }
 
     }

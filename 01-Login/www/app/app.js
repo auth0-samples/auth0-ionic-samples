@@ -1,9 +1,21 @@
 // Ionic Starter App
 
-angular.module('app', ['ionic', 'auth0', 'angular-storage', 'angular-jwt'])
+angular.module('app', ['ionic', 'angular-storage', 'angular-jwt', 'auth0.lock'])
 
-  .run(function ($ionicPlatform, $rootScope, auth, store, jwtHelper, $location) {
+  .run(function ($ionicPlatform, $rootScope, authManager, authService, store, jwtHelper, $location) {
+
+      
     $ionicPlatform.ready(function () {
+
+      // Register the authentication listener that is
+      // set up in auth.service.js
+      authService.registerAuthenticationListener();
+
+      // Check for a valid JWT when the user
+      // closes and opens the app
+      authManager.checkAuthOnRefresh();
+      
+
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
       if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
@@ -16,40 +28,9 @@ angular.module('app', ['ionic', 'auth0', 'angular-storage', 'angular-jwt'])
         StatusBar.styleDefault();
       }
     });
-
-    // This hooks all auth events to check everything as soon as the app starts
-    auth.hookEvents();
-
-    //This event gets triggered on URL change
-    var refreshingToken = null;
-    $rootScope.$on('$locationChangeStart', function () {
-      var token = store.get('token');
-      var refreshToken = store.get('refreshToken');
-      if (token) {
-        if (!jwtHelper.isTokenExpired(token)) {
-          if (!auth.isAuthenticated) {
-            auth.authenticate(store.get('profile'), token);
-          }
-        } else {
-          if (refreshToken) {
-            if (refreshingToken === null) {
-              refreshingToken = auth.refreshIdToken(refreshToken).then(function (idToken) {
-                store.set('token', idToken);
-                auth.authenticate(store.get('profile'), idToken);
-              }).finally(function () {
-                refreshingToken = null;
-              });
-            }
-            return refreshingToken;
-          } else {
-            $location.path('/login');// Notice: this url must be the one defined
-          }                          // in your login state. Refer to step 5.
-        }
-      }
-    });
   })
 
-  .config(function ($stateProvider, $urlRouterProvider, authProvider, $httpProvider, jwtInterceptorProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $httpProvider, jwtInterceptorProvider, jwtOptionsProvider, lockProvider) {
 
     $stateProvider
 
@@ -62,13 +43,26 @@ angular.module('app', ['ionic', 'auth0', 'angular-storage', 'angular-jwt'])
       .state('login', { // Notice: this state name matches the loginState property value to set in authProvider.init({...}) below...
         url: '/login',
         templateUrl: 'app/account/login.html'
-      })
-      ;
+      });
 
-    authProvider.init({
+    lockProvider.init({
       domain: AUTH0_DOMAIN,
       clientID: AUTH0_CLIENT_ID,
-      loginState: 'login'
+      options: {
+        auth: {
+          redirect: false,
+          params: {
+            scope: 'openid offline_access',
+            device: 'Mobile device'
+          }
+        }
+      }
+    });
+
+    jwtOptionsProvider.config({
+      tokenGetter: function() {
+        return localStorage.getItem('id_token');
+      }
     });
 
     // if none of the above states are matched, use this as the fallback
