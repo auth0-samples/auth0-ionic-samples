@@ -16,7 +16,7 @@
     // Log in with username and password
     function login() {
       auth.signin({
-        connection: 'Database-Connection',
+        connection: 'Username-Password-Authentication',
         username: vm.username,
         password: vm.password,
         authParams: {
