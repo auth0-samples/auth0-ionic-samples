@@ -44,7 +44,6 @@ ionic serve
 
     function doLogin() {
       auth.signin({
-        container: 'lock-container',
         authParams: {
           scope: 'openid offline_access',
           device: 'Mobile device'
