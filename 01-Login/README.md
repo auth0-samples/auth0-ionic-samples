@@ -2,8 +2,6 @@
 
 This example shows how to add ***Login/SignUp*** to your application using the `Lock` widget.
 
-You can read a quickstart for this sample [here](https://auth0.com/docs/quickstart/native/ionic/01-login). 
-
 ## Getting Started
 
 To run this quickstart you can fork and clone this repo.
@@ -19,6 +17,9 @@ bower install
 # Get the plugins
 ionic state restore --plugins
 
+# Make sure inappbrowser is installed
+ionic plugin add cordova-plugin-inappbrowser
+
 # Run
 ionic serve
 ```
@@ -30,93 +31,156 @@ ionic serve
 ```js
 // /www/app/app.js
 
-angular.module('app', ['ionic', 'auth0', 'angular-storage', 'angular-jwt'])
+angular.module('app', ['ionic', 'angular-storage', 'angular-jwt', 'auth0.lock'])
 
-.run(function ($ionicPlatform, $rootScope, auth, store, jwtHelper, $location) {
+  .run(function ($ionicPlatform, $rootScope, authManager, authService, store, jwtHelper, $location) {
 
-$ionicPlatform.ready(function () {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-    cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-    cordova.plugins.Keyboard.disableScroll(true);
+      
+    $ionicPlatform.ready(function () {
 
-    }
-    if (window.StatusBar) {
-    // org.apache.cordova.statusbar required
-    StatusBar.styleDefault();
-    }
-});
+      // Register the authentication listener that is
+      // set up in auth.service.js
+      authService.registerAuthenticationListener();
 
-// This hooks all auth events to check everything as soon as the app starts
-auth.hookEvents();
+      // Check for a valid JWT when the user
+      // closes and opens the app
+      authManager.checkAuthOnRefresh();
+      
 
-})
+      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+      // for form inputs)
+      if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
+        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+        cordova.plugins.Keyboard.disableScroll(true);
 
-.config(function ($stateProvider, $urlRouterProvider, authProvider, $httpProvider, jwtInterceptorProvider) {
+      }
+      if (window.StatusBar) {
+        // org.apache.cordova.statusbar required
+        StatusBar.styleDefault();
+      }
+    });
+  })
 
-$stateProvider
-    .state('home', {
-    url: '/',
-    templateUrl: 'app/home/home.html'
+  .config(function ($stateProvider, $urlRouterProvider, $httpProvider, jwtInterceptorProvider, jwtOptionsProvider, lockProvider) {
+
+    $stateProvider
+
+      // setup an abstract state for the tabs directive
+      .state('home', {
+        url: '/',
+        templateUrl: 'app/home/home.html'
+      })
+
+      .state('login', { // Notice: this state name matches the loginState property value to set in authProvider.init({...}) below...
+        url: '/login',
+        templateUrl: 'app/account/login.html'
+      });
+
+    lockProvider.init({
+      domain: AUTH0_DOMAIN,
+      clientID: AUTH0_CLIENT_ID,
+      options: {
+        auth: {
+          redirect: false,
+          params: {
+            scope: 'openid offline_access',
+            device: 'Mobile device'
+          }
+        }
+      }
     });
 
-// if none of the above states are matched, use this as the fallback
-$urlRouterProvider.otherwise('/');
+    jwtOptionsProvider.config({
+      tokenGetter: function() {
+        return localStorage.getItem('id_token');
+      }
+    });
 
-// Initialized the Auth0 provider
-authProvider.init({
-    domain: AUTH0_DOMAIN,
-    clientID: AUTH0_CLIENT_ID,
-    loginState: 'login'
-});
-
-});
+    // if none of the above states are matched, use this as the fallback
+    $urlRouterProvider.otherwise('/');
 ```
 
-### 2. Implement the login controller
+### 2. Implement the authService
+
+The best way to coordinate the authentication related activities of your application is to create a reusable authentication service. This service is the place to register reusable methods for doing things like logging the user in, logging them out, and registering the listener that will be used by Lock to save the user's JWT and profile when authentication is successful.
+
+```js
+// www/app/auth/auth.service.js
+
+angular
+  .module('app')
+  .service('authService', authService);
+
+  authService.$inject = ['$rootScope', 'lock', 'authManager'];
+
+  function authService($rootScope, lock, authManager) {
+
+    var userProfile = JSON.parse(localStorage.getItem('profile')) || {};
+
+    function login() {
+      lock.show();
+    }
+
+    // Logging out just requires removing the user's
+    // id_token and profile
+    function logout() {
+      localStorage.removeItem('id_token');
+      localStorage.removeItem('profile');
+      authManager.unauthenticate();
+      userProfile = {};
+    }
+
+    // Set up the logic for when a user authenticates
+    // This method is called from app.run.js
+    function registerAuthenticationListener() {
+      lock.on('authenticated', function(authResult) {
+        localStorage.setItem('id_token', authResult.idToken);
+        authManager.authenticate();
+        lock.hide();
+
+        lock.getProfile(authResult.idToken, function(error, profile) {
+          if (error) {
+            console.log(error);
+          }
+
+          localStorage.setItem('profile', JSON.stringify(profile));
+          $rootScope.$broadcast('userProfileSet', profile);
+        });
+      });
+    }
+
+    return {
+      userProfile: userProfile,
+      login: login,
+      logout: logout,
+      registerAuthenticationListener: registerAuthenticationListener,
+    }
+  }
+```
+
+### 3. Implement the login controller
 
 ```js
 // /www/app/account/login.controller.js
-
-(function () {
-  'use strict';
 
   angular
     .module('app')
     .controller('LoginController', LoginController)
 
-  LoginController.$inject = ['$scope', '$state', 'auth', 'store'];
+  LoginController.$inject = ['$scope', '$state', 'authService', 'store'];
 
-  function LoginController($scope, $state, auth, store) {
+  function LoginController($scope, $state, authService, store) {
     var vm = this;
 
     function doLogin() {
-      auth.signin({
-        authParams: {
-          scope: 'openid offline_access',
-          device: 'Mobile device'
-        }
-      }, function (profile, token, accessToken, state, refreshToken) {
-        // Success callback
-        store.set('profile', profile);
-        store.set('token', token);
-        store.set('accessToken', accessToken);
-        store.set('refreshToken', refreshToken);
-        
-         $state.go("home");
-      }, function () {
-        // Error callback
-      });
+      authService.login();
     }
 
     doLogin();
   }
-  
-} ());
 ```
 
-### 3. Add the login view
+### 4. Add the login view
 
 ```html
 <!-- /www/app/account/login.html -->
@@ -124,9 +188,7 @@ authProvider.init({
 <ion-view view-title="Log In" ng-controller="LoginController as vm">
   <ion-content class="center">
     <div class="row">
-      <div class="col">
-          <div id="lock-container"></div>
-      </div>
+      <div class="col"></div>
     <div>
   </ion-content>
 </ion-view>
