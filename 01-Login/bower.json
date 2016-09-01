@@ -1,5 +1,5 @@
 {
-  "name": "HelloIonic",
+  "name": "auth0-ionic",
   "private": "true",
   "dependencies": {
     "auth0-lock": "10.2.0",
