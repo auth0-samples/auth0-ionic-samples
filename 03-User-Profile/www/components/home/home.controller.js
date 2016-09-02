@@ -16,11 +16,9 @@
 
     $scope.$on("$ionicView.beforeEnter", function() {
 
-      try {
-        vm.profile = JSON.parse(localStorage.getItem('profile'));
-      } catch (e) {
-        vm.logout();
-      }
+      authService.getProfileDeferred().then(function(profile) {
+        vm.profile = profile;
+      });
 
     });
 

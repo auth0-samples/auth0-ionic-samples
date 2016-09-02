@@ -6,11 +6,16 @@
     .module('app')
     .service('authService', authService);
 
-  authService.$inject = ['$rootScope', 'lock', 'authManager', 'jwtHelper'];
+  authService.$inject = ['$rootScope', 'lock', 'authManager', 'jwtHelper', '$q'];
 
-  function authService($rootScope, lock, authManager, jwtHelper) {
+  function authService($rootScope, lock, authManager, jwtHelper, $q) {
 
-    var userProfile = JSON.parse(localStorage.getItem('profile')) || {};
+    var userProfile = JSON.parse(localStorage.getItem('profile')) || null;
+    var deferredProfile = $q.defer();
+
+    if (userProfile) {
+      deferredProfile.resolve(userProfile);
+    }
 
     function login() {
       lock.show();
@@ -19,6 +24,7 @@
     // Logging out just requires removing the user's
     // id_token and profile
     function logout() {
+      deferredProfile = $q.defer();
       localStorage.removeItem('id_token');
       localStorage.removeItem('profile');
       authManager.unauthenticate();
@@ -39,13 +45,17 @@
           }
 
           localStorage.setItem('profile', JSON.stringify(profile));
-          $rootScope.$broadcast('userProfileSet', profile);
 
           // Redirect to default page
           location.hash = '#/';
 
+          deferredProfile.resolve(profile);
         });
       });
+    }
+
+    function getProfileDeferred() {
+      return deferredProfile.promise;
     }
 
     function checkAuthOnRefresh() {
@@ -64,7 +74,8 @@
       login: login,
       logout: logout,
       registerAuthenticationListener: registerAuthenticationListener,
-      checkAuthOnRefresh: checkAuthOnRefresh
+      checkAuthOnRefresh: checkAuthOnRefresh,
+      getProfileDeferred: getProfileDeferred
     }
   }
 })();
