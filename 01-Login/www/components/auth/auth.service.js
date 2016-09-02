@@ -6,9 +6,9 @@
     .module('app')
     .service('authService', authService);
 
-  authService.$inject = ['$rootScope', 'lock', 'authManager'];
+  authService.$inject = ['$rootScope', 'lock', 'authManager', 'jwtHelper'];
 
-  function authService($rootScope, lock, authManager) {
+  function authService($rootScope, lock, authManager, jwtHelper) {
 
     var userProfile = JSON.parse(localStorage.getItem('profile')) || {};
 
@@ -33,15 +33,29 @@
         authManager.authenticate();
         lock.hide();
 
+        // Redirect to default page
+        location.hash = '#/';
+
         lock.getProfile(authResult.idToken, function(error, profile) {
           if (error) {
             console.log(error);
           }
 
           localStorage.setItem('profile', JSON.stringify(profile));
-          $rootScope.$broadcast('userProfileSet', profile);
+
         });
       });
+    }
+
+    function checkAuthOnRefresh() {
+      var token = localStorage.getItem('id_token');
+      if (token) {
+        if (!jwtHelper.isTokenExpired(token)) {
+          if (!$rootScope.isAuthenticated) {
+            authManager.authenticate();
+          }
+        }
+      }
     }
 
     return {
@@ -49,6 +63,7 @@
       login: login,
       logout: logout,
       registerAuthenticationListener: registerAuthenticationListener,
+      checkAuthOnRefresh: checkAuthOnRefresh
     }
   }
 })();
