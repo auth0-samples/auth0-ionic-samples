@@ -124,7 +124,7 @@
 
     }
 
-    function unLinkAccount(account) {
+    function unLinkAccount(identity) {
       try {
         var profile = JSON.parse(localStorage.getItem('profile'));
         var token = localStorage.getItem('id_token');
@@ -136,7 +136,7 @@
 
       $http({
         method: 'DELETE',
-        url: 'https://' + AUTH0_DOMAIN + '/api/v2/users/' + profile.user_id + '/identities/' + account.provider + '/' + account.user_id,
+        url: 'https://' + AUTH0_DOMAIN + '/api/v2/users/' + profile.user_id + '/identities/' + identity .provider + '/' + identity .user_id,
         headers: {
           Authorization: 'Bearer ' + token
         }

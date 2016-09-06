@@ -15,7 +15,7 @@
           <h2>{{ vm.profile.name }}</h2>
         </div>
 
-        <div class="item item-avatar item-button-right assertive" ng-repeat="identity in vm.identities" ng-if="!identity.hiddenItem">
+        <div class="item item-avatar item-button-right assertive" ng-repeat="identity in vm.identities">
           <img src="{{identity.profileData.picture }}">
           <h2>{{ identity.profileData.name || identity.profileData.email }}</h2>
           <button class="button button-assertive" ng-click="vm.unLinkAccount(identity)">
