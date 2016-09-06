@@ -7,7 +7,6 @@
   <title></title>
 
   <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
 
   <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -20,20 +19,19 @@
   <script src="cordova.js"></script>
 
   <!-- Auth0 Lock -->
-  <script src="lib/auth0-lock/build/auth0-lock.js"></script>
+  <script src="lib/auth0-lock/build/lock.min.js"></script>
   <!-- auth0-angular -->
-  <script src="lib/auth0-angular/build/auth0-angular.js"></script>
-  <!-- angular storage -->
-  <script src="lib/a0-angular-storage/dist/angular-storage.js"></script>
+  <script src="lib/angular-lock/dist/angular-lock.min.js"></script>
   <!-- angular-jwt -->
-  <script src="lib/angular-jwt/dist/angular-jwt.js"></script>
+  <script src="lib/angular-jwt/dist/angular-jwt.min.js"></script>
 
   <!-- your app's js -->
-  <script src="app/auth0.variables.js"></script>
-  <script src="app/app.js"></script>
-  <script src="app/home/home.controller.js"></script>
-  <script src="app/account/login.controller.js"></script>
-  <script src="app/account/linkAccount.controller.js"></script>
+  <script src="./auth0.variables.js"></script>
+  <script src="./app.js"></script>
+  <script src="./app.run.js"></script>
+  <script src="components/auth/auth.service.js"></script>
+  <script src="components/home/home.controller.js"></script>
+  <script src="components/login/login.controller.js"></script>
 </head>
 
 <body ng-app="app">
