@@ -21,3 +21,105 @@ ionic state restore --plugins
 # Run
 ionic serve
 ```
+
+
+## Important Snippets
+
+### 1. Add `SERVER_PATH` const to auth0 variables
+
+```js
+/* ===== www/auth0.variables.js ===== */
+var AUTH0_CLIENT_ID='{CLIENT_ID}';
+var AUTH0_CALLBACK_URL=location.href;
+var AUTH0_DOMAIN='{DOMAIN}';
+var SERVER_PATH = 'http://localhost:3001';
+```
+
+### 2. Add `ping`, `securedPing` methods and their callbacks in the home controller
+
+```js
+/* ===== www/components/home/home.controller.js ===== */
+(function () {
+
+  ...
+
+  function HomeController($state, authService, $scope, $http, $ionicPopup) {
+    
+    ...
+
+    function ping() {
+      $http.get(SERVER_PATH + '/ping')
+        .success(onPingSuccess)
+        .error(onPingFail);
+    }
+
+    function securedPing() {
+      $http.get(SERVER_PATH + '/secured/ping')
+        .success(onPingSuccess)
+        .error(onPingFail);
+    }
+
+    function onPingSuccess(response) {
+      $ionicPopup.alert({
+        title: 'Congratulations!',
+        template: response.text
+      });
+    }
+
+    function onPingFail(error, status) {
+      if (status === 401) {
+        $ionicPopup.alert({
+          title: 'Unauthorized',
+          template: 'You not authorized to view this page.'
+        });
+      } else {
+        $ionicPopup.alert({
+          title: 'Error',
+          template: 'It seems simple server are not launched. \
+          <a href="https://github.com/auth0-samples/auth0-ionic-samples/tree/master/Server">more details</a>'
+        });
+      }
+    }
+
+  }
+
+}());
+```
+
+### 3. Display `ping` and `securedPing` buttons in the home view 
+
+```html
+<ion-view view-title="Auth0 Ionic Quickstart" ng-controller="HomeController as vm">
+  <ion-content class="padding">
+    <div ng-hide="isAuthenticated">
+      <p>Welcome to the Auth0 Ionic Sample! Please log in:</p>
+      <button class="button button-full button-positive" ng-click="vm.login()">
+        Log In
+      </button>
+    </div>
+    <div ng-show="isAuthenticated">
+      <div class="list card">
+        <div class="item item-avatar">
+          <img src="{{ vm.profile.picture }}">
+          <h2>{{ vm.profile.name }}</h2>
+          <span ng-if="vm.profile.country" class="additional-info">Country (added by rule): <strong>{{ vm.profile.country }}</strong></span>
+        </div>
+        <a class="item item-icon-left assertive" ng-click="vm.logout()">
+          <i class="icon ion-log-out"></i> Log Out
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <button class="button button-full button-positive" ng-click="vm.ping()">
+        Ping
+      </button>
+
+      <button class="button button-full button-positive" ng-click="vm.securedPing()">
+        Secured Ping
+      </button>
+    </div>
+
+  </ion-content>
+</ion-view>
+```
