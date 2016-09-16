@@ -22,3 +22,80 @@ ionic state restore --plugins
 # Run
 ionic serve
 ```
+
+
+## Important Snippets
+
+### 1. Update the home controller
+ 
+```js
+/* ===== www/components/home/home.controller.js ===== */
+(function () {
+
+  'use strict';
+
+  angular
+    .module('app')
+    .controller('HomeController', HomeController);
+
+  HomeController.$inject = ['$state', 'authService', '$scope'];
+
+  function HomeController($state, authService, $scope) {
+    var vm = this;
+
+    vm.login = login;
+    vm.logout = logout;
+
+    $scope.$on("$ionicView.beforeEnter", function() {
+
+      authService.getProfileDeferred().then(function(profile) {
+        vm.profile = profile;
+      });
+
+    });
+
+    function login() {
+      $state.go("login");
+    }
+
+    function logout() {
+      authService.logout();
+
+      // Clear VM value
+      vm.profile = null;
+    }
+
+  }
+
+}());
+```
+
+### 2. Display user country in the home view
+
+```html
+<!-- ===== www/components/home/home.html ===== -->
+<ion-view view-title="Auth0 Ionic Quickstart" ng-controller="HomeController as vm">
+  <ion-content class="padding">
+    <div ng-hide="isAuthenticated">
+      <p>Welcome to the Auth0 Ionic Sample! Please log in:</p>
+      <button class="button button-full button-positive" ng-click="vm.login()">
+        Log In
+      </button>
+    </div>
+    <div ng-show="isAuthenticated">
+      <div class="list card">
+        <div class="item item-avatar">
+          <img src="{{ vm.profile.picture }}">
+          <h2>{{ vm.profile.name }}</h2>
+          
+          <span ng-if="vm.profile.country" class="additional-info">Country (added by rule): <strong>{{ vm.profile.country }}</strong></span>
+          
+        </div>
+        <a class="item item-icon-left assertive" ng-click="vm.logout()">
+          <i class="icon ion-log-out"></i> Log Out
+        </a>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+```
