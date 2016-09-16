@@ -16,3 +16,40 @@ ionic state restore --plugins
 # Run
 ionic serve
 ```
+
+
+## Important Snippets
+
+### 1. Implement the home controller
+
+```js
+/* ===== www/components/home/home.controller.js ===== */
+(function () {
+
+  'use strict';
+
+  angular
+    .module('app')
+    .controller('HomeController', HomeController);
+
+  HomeController.$inject = ['$state', 'lock'];
+
+  function HomeController($state, lock) {
+    var vm = this;
+
+    vm.lock = lock;
+  }
+
+}());
+```
+
+### 2. Add the home view
+
+```html
+/* ===== www/components/home/home.html ===== */
+<ion-view view-title="Auth0 Ionic Quickstart" ng-controller="HomeController as vm">
+  <ion-content class="padding">
+    <h3>Welcome to the Auth0 - Ionic integration app. This starter seed is an empty shell.</h3>
+  </ion-content>
+</ion-view>
+```
