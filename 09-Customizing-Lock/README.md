@@ -22,3 +22,46 @@ ionic state restore --plugins
 # Run
 ionic serve
 ```
+
+
+## Important Snippets
+
+### 1. Add options on lock instance initialization
+
+```js
+/* ===== www/app.js ===== */
+(function () {
+
+  ...
+
+  function config($stateProvider, $urlRouterProvider, lockProvider, jwtOptionsProvider) {
+  
+    ...
+
+    lockProvider.init({
+      clientID: AUTH0_CLIENT_ID,
+      domain: AUTH0_DOMAIN,
+      options: {
+        auth: {
+          redirect: false,
+          params: {
+            scope: 'openid',
+            device: 'Mobile device'
+          }
+        },
+        theme: {
+          logo: 'https://auth0.com/lib/homepage/img/logo-tmz.svg',
+          primaryColor: "#b81b1c"
+        },
+        languageDictionary: {
+          title: "Log me in"
+        }
+      }
+    });
+
+   ...
+
+  }
+
+})();
+```
