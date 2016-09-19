@@ -63,7 +63,7 @@
       } else {
         $ionicPopup.alert({
           title: 'Error',
-          template: 'It looks like the server isn’t launched. Launch it by \
+          template: 'It looks like the server is not launched. Launch it by \
           <a href="https://github.com/auth0-samples/auth0-ionic-samples/tree/master/Server">instructions to launch</a>'
         });
       }
