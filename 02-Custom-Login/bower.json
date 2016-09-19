@@ -2,6 +2,7 @@
   "name": "auth0-ionic",
   "private": "true",
   "dependencies": {
+    "auth0.js": ">= 7.2.0",
     "angular-auth0": "^1.0.0",
     "angular-jwt": "~0.1.0"
   },
