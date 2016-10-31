@@ -8,7 +8,7 @@ You can read a quickstart for this sample [here](https://auth0.com/docs/quicksta
 
 To run this quickstart you can fork and clone this repo.
 
-Be sure to set the correct values for your Auth0 application in the `www/app/auth0.variables.js` file.
+Be sure to set the correct values for your Auth0 application in the `www/auth0.variables.js` file.
 
 To run the application
 
