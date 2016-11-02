@@ -32,6 +32,7 @@
       options: {
         auth: {
           redirect: false,
+          sso: false,
           params: {
             scope: 'openid',
             device: 'Mobile device'
