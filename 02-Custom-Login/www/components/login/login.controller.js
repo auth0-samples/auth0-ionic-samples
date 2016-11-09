@@ -11,11 +11,16 @@
     var vm = this;
 
     vm.login = login;
-    vm.loginWithGoogle = authService.loginWithGoogle;
+    vm.signup = signup;
+    vm.loginWithGoogle = authService.loginWithGoogle;    
 
     // Log in with username and password
     function login() {
       authService.login(vm.username, vm.password);
+    }
+
+    function signup() {
+      authService.signup(vm.username, vm.password);
     }
 
   }

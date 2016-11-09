@@ -16,6 +16,7 @@
       angularAuth0.login({
         connection: 'Username-Password-Authentication',
         responseType: 'token',
+        ppopup: true,
         email: username,
         password: password
       }, onAuthenticated, null);
@@ -25,9 +26,10 @@
       angularAuth0.signup({
         connection: 'Username-Password-Authentication',
         responseType: 'token',
+        popup: true,
         email: username,
         password: password
-      }, callback);
+      }, onAuthenticated, null);
     }
 
     function loginWithGoogle() {
@@ -61,8 +63,8 @@
     function onAuthenticated(error, authResult) {
       if (error) {
         return $ionicPopup.alert({
-          title: 'Login failed!',
-          template: 'Please check your credentials!'
+          title: 'Error!',
+          template: error
         });
       }
 
