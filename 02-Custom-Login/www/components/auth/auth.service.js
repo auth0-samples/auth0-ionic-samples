@@ -63,7 +63,7 @@
     function onAuthenticated(error, authResult) {
       if (error) {
         return $ionicPopup.alert({
-          title: 'Error!',
+          title: 'Login failed!',
           template: error
         });
       }
