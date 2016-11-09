@@ -22,7 +22,7 @@
       }, onAuthenticated, null);
     }
 
-    function signup(username, password, callback) {
+    function signup(username, password) {
       angularAuth0.signup({
         connection: 'Username-Password-Authentication',
         responseType: 'token',
