@@ -49,7 +49,6 @@ ionic serve
       var options = {
         rememberLastLogin: false,
         auth: {
-          redirect: false,
           params: {
             scope: 'openid',
             device: 'Mobile device'

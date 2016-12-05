@@ -60,7 +60,6 @@ ionic serve
       domain: AUTH0_DOMAIN,
       options: {
         auth: {
-          redirect: false,
           params: {
             scope: 'openid',
             device: 'Mobile device'
