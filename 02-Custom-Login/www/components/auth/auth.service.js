@@ -16,7 +16,7 @@
       angularAuth0.login({
         connection: 'Username-Password-Authentication',
         responseType: 'token',
-        ppopup: true,
+        popup: true,
         email: username,
         password: password
       }, onAuthenticated, null);
