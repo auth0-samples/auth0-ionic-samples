@@ -31,6 +31,7 @@
       domain: AUTH0_DOMAIN,
       options: {
         auth: {
+          redirect: false,
           sso: false,
           params: {
             scope: 'openid',

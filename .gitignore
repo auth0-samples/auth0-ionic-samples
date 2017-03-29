@@ -32,3 +32,4 @@ platforms/android/out
 
 # Gradle builds
 platforms/android/build
+auth0-variables.js

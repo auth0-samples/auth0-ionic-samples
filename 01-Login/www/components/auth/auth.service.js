@@ -40,10 +40,12 @@
           if (error) {
             console.log(error);
           }
-
           localStorage.setItem('profile', JSON.stringify(profile));
-
         });
+      });
+
+      lock.on('authorization_error', function(error) {
+        console.log(error);
       });
     }
 
