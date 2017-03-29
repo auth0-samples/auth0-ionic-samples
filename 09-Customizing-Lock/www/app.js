@@ -38,7 +38,7 @@
           }
         },
         theme: {
-          logo: 'https://auth0.com/lib/homepage/img/logo-tmz.svg',
+          logo: 'https://cdn.auth0.com/website/playground/logo-tmz.svg',
           primaryColor: "#b81b1c"
         },
         languageDictionary: {
