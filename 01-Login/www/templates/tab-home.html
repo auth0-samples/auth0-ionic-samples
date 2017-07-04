@@ -1,0 +1,25 @@
+<ion-view view-title="Home">
+  <ion-content class="padding">
+    <h2>Welcome!</h2>
+    <p ng-if="!auth.isAuthenticated()">
+      You are not logged in! Please log in to continue.
+    </p>
+    <p ng-if="auth.isAuthenticated()">
+      You are logged in! You can now view your profile.
+    </p>
+
+    <button
+      ng-if="!auth.isAuthenticated()"
+      class="button button-block button-positive"
+      ng-click="auth.login()">
+        Log In
+    </button>
+
+    <button
+      ng-if="auth.isAuthenticated()"
+      class="button button-block button-assertive"
+      ng-click="auth.logout()">
+        Log Out
+    </button>
+  </ion-content>
+</ion-view>

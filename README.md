@@ -1,38 +1,33 @@
-# Quickstart Sample for Ionic 1
+# Auth0 Ionic
 
-This repository contains the source code for the [Ionic 1 Quickstart](https://auth0.com/docs/quickstart/native/ionic)
+This repo contains samples that demonstrate how to use Auth0 in an Ionic application.
 
-Please see the Quickstart itself, or the Readme's in the individual folders for more information.
+Read the [quickstart guide](https://auth0.com/docs/quickstart/native/ionic) for more detail.
 
-## Troubleshooting
+## What is Auth0?
 
-#### Lock freezing when trying to do social login or logging in with the previously logged-in user
+Auth0 helps you to:
 
-Make sure you have the `cordova-inappbrowser` plugin installed.
+* Add authentication with [multiple authentication sources](https://docs.auth0.com/identityproviders), either social like **Google, Facebook, Microsoft Account, LinkedIn, GitHub, Twitter, Box, Salesforce, among others**, or enterprise identity systems like **Windows Azure AD, Google Apps, Active Directory, ADFS or any SAML Identity Provider**.
+* Add authentication through more traditional **[username/password databases](https://docs.auth0.com/mysql-connection-tutorial)**.
+* Add support for **[linking different user accounts](https://docs.auth0.com/link-accounts)** with the same user.
+* Support for generating signed [JSON Web Tokens](https://docs.auth0.com/jwt) to call your APIs and **flow the user identity** securely.
+* Analytics of how, when and where users are logging in.
+* Pull data from other sources and add it to the user profile, through [JavaScript rules](https://docs.auth0.com/rules).
 
-```bash
-ionic plugin rm cordova-plugin-inappbrowser
-ionic plugin add cordova-plugin-inappbrowser
-```
+## Create a free account in Auth0
 
-#### Getting "Caught exception: undefined"
+1. Go to [Auth0](https://auth0.com) and click Sign Up.
+2. Use Google, GitHub or Microsoft Account to login.
 
-Update to the latest version of Cordova
+## Issue Reporting
 
-```bash
-sudo npm uninstall -g cordova
-sudo npm install -g cordova
-```
+If you have found a bug or if you have a feature request, please report them at this repository issues section. Please do not report security vulnerabilities on the public GitHub issue tracker. The [Responsible Disclosure Program](https://auth0.com/whitehat) details the procedure for disclosing security issues.
 
-#### Getting "Error: spawn EACCESS" error
+## Author
 
-Run `chmod +x hooks/after_prepare/010_add_platform_class.js`
+[Auth0](auth0.com)
 
-#### Getting "Error: Cannot find module 'unorm'" error
+## License
 
-Update to the latest version of Cordova iOS platform.
-
-```bash
-ionic platform rm ios
-ionic platform add ios
-```
+This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more info.

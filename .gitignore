@@ -1,35 +1,7 @@
-# Common Ignores
-.vscode/
-.DS_Store
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
 
-# Bower
-**/www/lib
-
-# ionic
 node_modules/
+platforms/
 plugins/
-
-# Platform iOS
-*.mode1v3
-*.perspectivev3
-*.pbxuser
-platforms/ios/build
-
-# Platform Android
-platforms/android/build.xml
-platforms/android/local.properties
-platforms/android/gradlew
-platforms/android/gradlew.bat
-platforms/android/gradle
-
-# Ant builds
-platforms/android/ant-build
-platforms/android/ant-gen
-
-# Eclipse builds
-platforms/android/gen
-platforms/android/out
-
-# Gradle builds
-platforms/android/build
-auth0-variables.js
+.DS_Store
