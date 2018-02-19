@@ -1,3 +1,5 @@
+# NOTE: These examples are currently not working well. We are actively working on having a better solution for Ionic.
+
 # Auth0 Ionic Login
 
 This sample demonstrates how to add authentication to an Ionic application using Auth0's Lock widget from the hosted login page.
