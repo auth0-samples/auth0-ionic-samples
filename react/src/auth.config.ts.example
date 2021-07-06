@@ -1,0 +1,9 @@
+import { isPlatform } from "@ionic/react";
+
+export const domain = "{DOMAIN}";
+export const clientId = "{CLIENT_ID}";
+const appId = "com.auth0.samples";
+
+export const callbackUri = isPlatform("desktop")
+  ? "http://localhost:3000"
+  : `${appId}://${domain}/capacitor/${appId}/callback`;
