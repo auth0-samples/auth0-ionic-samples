@@ -5,7 +5,7 @@ version: 2
 cli:
   server: https://app.fossa.com
   fetcher: custom
-  project: git@github.com:auth0-samples/auth0-ionic5-sample.git
+  project: git@github.com:auth0-samples/auth0-ionic-samples.git
 analyze:
   modules:
   - name: Podfile
