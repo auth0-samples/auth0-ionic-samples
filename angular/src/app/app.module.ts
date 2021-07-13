@@ -13,8 +13,9 @@ const config: AuthConfig = {
   domain,
   clientId,
   redirectUri: callbackUri,
-  cacheLocation: 'localstorage',
-  useRefreshTokens: true,
+  /* Uncomment the following lines for better support  in browers like Safari where third-party cookies are blocked. */
+  // cacheLocation: "localstorage",
+  // useRefreshTokens: true
 };
 
 @NgModule({

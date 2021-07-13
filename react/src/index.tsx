@@ -13,8 +13,9 @@ ReactDOM.render(
       domain={domain}
       clientId={clientId}
       redirectUri={callbackUri}
-      cacheLocation="localstorage"
-      useRefreshTokens={true}
+      /* Uncomment the following lines for better support  in browers like Safari where third-party cookies are blocked. */
+      // cacheLocation="localstorage"
+      // useRefreshTokens={true}
     >
       <App />
     </Auth0Provider>
