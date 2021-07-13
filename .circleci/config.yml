@@ -1,0 +1,62 @@
+version: 2.1
+executors:
+  build-executor:
+    docker:
+      - image: circleci/node:15.14.0-browsers
+commands:
+  build-node:
+    parameters:
+      working_directory:
+        type: string
+      config_path:
+        type: string
+      test_cmd:
+        type: string
+        default: npm test
+    description: "Builds and tests a node project"
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependencies-{{ .Branch }}-{{ checksum "<< parameters.working_directory >>/package-lock.json" }}
+      - run:
+          name: Install dependencies
+          command: npm ci
+          working_directory: << parameters.working_directory >>
+      - save_cache:
+          key: dependencies-{{ .Branch }}-{{ checksum "<< parameters.working_directory >>/package-lock.json" }}
+          paths:
+            - ~/.npm
+            - ~/.cache
+      - run:
+          name: Copy config
+          command: |
+            cp << parameters.working_directory >>/<< parameters.config_path >>/auth.config.ts.example << parameters.working_directory >>/<< parameters.config_path >>/auth.config.ts
+      - run:
+          name: Build
+          command: npm run build
+          working_directory: << parameters.working_directory >>
+      - run:
+          name: Run tests
+          command: << parameters.test_cmd >>
+          working_directory: << parameters.working_directory >>
+jobs:
+  build-angular:
+    executor:
+      name: build-executor
+    steps:
+      - build-node:
+          working_directory: angular
+          config_path: src/app
+          test_cmd: npm run test:ci
+  build-react:
+    executor:
+      name: build-executor
+    steps:
+      - build-node:
+          working_directory: react
+          config_path: src
+workflows:
+  build-samples:
+    jobs:
+      - build-angular
+      - build-react

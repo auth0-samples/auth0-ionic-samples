@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Auth0 Samples</string>
+    <string name="title_activity_main">Auth0 Samples</string>
+    <string name="package_name">com.auth0.samples</string>
+    <string name="custom_url_scheme">com.auth0.samples</string>
+</resources>
