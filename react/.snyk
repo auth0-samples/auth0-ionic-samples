@@ -1,0 +1,33 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.19.0
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  SNYK-JS-BROWSERSLIST-1090194:
+    - react-scripts > react-dev-utils > browserslist:
+        reason: No upgrade path
+        expires: '2021-08-08T09:17:28.019Z'
+  SNYK-JS-CSSWHAT-1298035:
+    - react-scripts > @svgr/webpack > @svgr/plugin-svgo > svgo > css-select > css-what:
+        reason: No upgrade path
+        expires: '2021-08-08T09:17:28.019Z'
+  SNYK-JS-EJS-1049328:
+    - react-scripts > workbox-webpack-plugin > workbox-build > @surma/rollup-plugin-off-main-thread > ejs:
+        reason: No upgrade path
+        expires: '2021-08-08T09:17:28.020Z'
+  SNYK-JS-GLOBPARENT-1016905:
+    - react-scripts > webpack > watchpack > watchpack-chokidar2 > chokidar > glob-parent:
+        reason: No upgrade path
+        expires: '2021-08-08T09:17:28.020Z'
+  SNYK-JS-LODASHTEMPLATE-1088054:
+    - react-scripts > workbox-webpack-plugin > workbox-build > lodash.template:
+        reason: No upgrade path
+        expires: '2021-08-08T09:17:28.021Z'
+  SNYK-JS-PATHPARSE-1077067:
+    - react-scripts > eslint-plugin-react > resolve > path-parse:
+        reason: No upgrade path
+        expires: '2021-08-08T09:17:28.025Z'
+  'snyk:lic:npm:axe-core:MPL-2.0':
+    - react-scripts > eslint-plugin-jsx-a11y > axe-core:
+        reason: No upgrade path
+        expires: '2021-08-08T09:17:28.025Z'
+patch: {}

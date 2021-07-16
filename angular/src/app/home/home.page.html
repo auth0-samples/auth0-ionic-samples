@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Auth0 Sample </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Auth0 Sample</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <app-login-button
+      *ngIf="(auth.isAuthenticated$ | async) === false"
+    ></app-login-button>
+
+    <app-profile></app-profile>
+
+    <app-logout-button
+      *ngIf="auth.isAuthenticated$ | async"
+    ></app-logout-button>
+  </div>
+</ion-content>
