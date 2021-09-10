@@ -5,7 +5,7 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
-import { auth0Domain, clientId, callbackUri } from "./auth.config";
+import { domain as auth0Domain, clientId, callbackUri } from "./auth.config";
 
 ReactDOM.render(
   <React.StrictMode>

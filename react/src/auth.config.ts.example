@@ -1,8 +1,12 @@
 import { isPlatform } from "@ionic/react";
 
-export const auth0Domain = "{DOMAIN}";
+export const domain = "{DOMAIN}";
 export const clientId = "{CLIENT_ID}";
 const appId = "com.auth0.samples";
+
+// Use `auth0Domain` in string interpolation below so that it doesn't
+// get replaced by the quickstart auto-packager
+const auth0Domain = domain;
 
 export const callbackUri = isPlatform("desktop")
   ? "http://localhost:3000"
