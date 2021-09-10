@@ -1,10 +1,11 @@
 import { isPlatform } from "@ionic/angular";
 import config from "../../capacitor.config";
 
-export const domain = "{DOMAIN}";
+const auth0Domain = "{DOMAIN}";
 export const clientId = "{CLIENT_ID}";
 const { appId } = config;
+export const domain = auth0Domain;
 
 export const callbackUri = isPlatform("desktop")
   ? "http://localhost:4200"
-  : `${appId}://${domain}/capacitor/${appId}/callback`;
+  : `${appId}://${auth0Domain}/capacitor/${appId}/callback`;
