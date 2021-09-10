@@ -5,12 +5,12 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
-import { domain, clientId, callbackUri } from "./auth.config";
+import { auth0Domain, clientId, callbackUri } from "./auth.config";
 
 ReactDOM.render(
   <React.StrictMode>
     <Auth0Provider
-      domain={domain}
+      domain={auth0Domain}
       clientId={clientId}
       redirectUri={callbackUri}
       /* Uncomment the following lines for better support  in browers like Safari where third-party cookies are blocked.
