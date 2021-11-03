@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 
 import { mergeMap } from 'rxjs/operators';
@@ -12,23 +12,27 @@ import { callbackUri } from './auth.config';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(public auth: AuthService) {}
+  constructor(public auth: AuthService, private ngZone: NgZone) {}
 
   ngOnInit(): void {
     App.addListener('appUrlOpen', ({ url }) => {
-      if (url?.startsWith(callbackUri)) {
-        if (
-          url.includes('state=') &&
-          (url.includes('error=') || url.includes('code='))
-        ) {
-          this.auth
-            .handleRedirectCallback(url)
-            .pipe(mergeMap(() => Browser.close()))
-            .subscribe();
-        } else {
-          Browser.close();
+      // Must run inside an NgZone for Angular to pick up the changes
+      // https://capacitorjs.com/docs/guides/angular
+      this.ngZone.run(() => {
+        if (url?.startsWith(callbackUri)) {
+          if (
+            url.includes('state=') &&
+            (url.includes('error=') || url.includes('code='))
+          ) {
+            this.auth
+              .handleRedirectCallback(url)
+              .pipe(mergeMap(() => Browser.close()))
+              .subscribe();
+          } else {
+            Browser.close();
+          }
         }
-      }
+      });
     });
   }
 }
