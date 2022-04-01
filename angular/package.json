@@ -21,7 +21,7 @@
     "@angular/platform-browser-dynamic": "~11.2.0",
     "@angular/router": "~11.2.0",
     "@auth0/auth0-angular": "^1.5.1",
-    "@capacitor/android": "^3.0.2",
+    "@capacitor/android": "^3.4.3",
     "@capacitor/app": "^1.0.2",
     "@capacitor/browser": "^1.0.2",
     "@capacitor/core": "^3.0.2",
