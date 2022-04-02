@@ -25,7 +25,7 @@
     "@capacitor/app": "^1.0.2",
     "@capacitor/browser": "^1.0.2",
     "@capacitor/core": "^3.4.3",
-    "@capacitor/haptics": "^1.0.2",
+    "@capacitor/haptics": "^1.1.4",
     "@capacitor/ios": "^3.4.3",
     "@capacitor/keyboard": "^1.0.2",
     "@capacitor/status-bar": "^1.0.2",
