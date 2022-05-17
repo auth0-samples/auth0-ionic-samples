@@ -29,7 +29,7 @@
     "@capacitor/ios": "^3.5.0",
     "@capacitor/keyboard": "^1.2.2",
     "@capacitor/status-bar": "^1.0.8",
-    "@ionic/angular": "^5.9.3",
+    "@ionic/angular": "^6.1.5",
     "rxjs": "~6.6.0",
     "tslib": "^2.4.0",
     "zone.js": "~0.11.4"
@@ -45,7 +45,7 @@
     "@angular/compiler-cli": "^13.3.8",
     "@angular/language-service": "~13.3.8",
     "@capacitor/cli": "^3.0.2",
-    "@ionic/angular-toolkit": "^2.1.2",
+    "@ionic/angular-toolkit": "^6.1.0",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
