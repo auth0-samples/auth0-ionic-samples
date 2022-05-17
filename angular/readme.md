@@ -26,8 +26,8 @@ Your project needs to be configured with your Auth0 Domain and Client ID for the
 Copy `src/app/auth.config.ts.example` into a new file in the same folder called `auth.config.ts`, and replace the values with your Auth0 application credentials:
 
 ```js
-export const domain = "{DOMAIN}";
-export const clientId = "{CLIENT_ID}";
+export const domain = '{DOMAIN}';
+export const clientId = '{CLIENT_ID}';
 ```
 
 ### Configure the Auth0 Application
@@ -53,7 +53,7 @@ http://localhost:4200
 If running on a mobile device, add the following to your **Allowed Origins (CORS)** settings:
 
 ```
-capacitor://localhost
+capacitor://localhost, http://localhost
 ```
 
 ### Run on the desktop

@@ -2,7 +2,7 @@ version: 2.1
 executors:
   build-executor:
     docker:
-      - image: circleci/node:15.14.0-browsers
+      - image: circleci/node:16.10.0-browsers
 commands:
   build-node:
     parameters:
