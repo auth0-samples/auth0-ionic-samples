@@ -1,4 +1,4 @@
-# Auth0 Ionic 5 + Capacitor 3 Sample Apps
+# Auth0 Ionic + Capacitor Sample Apps
 
 This repo contains samples that demonstrate how to use [Auth0](https://auth0.com) in an Ionic 5 & Capacitor mobile application.
 

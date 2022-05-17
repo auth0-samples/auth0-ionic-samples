@@ -57,7 +57,7 @@ http://localhost:3000
 If running on a mobile device, add the following to your **Allowed Origins (CORS)** settings:
 
 ```
-capacitor://localhost
+capacitor://localhost, http://localhost
 ```
 
 ### Run on the desktop
