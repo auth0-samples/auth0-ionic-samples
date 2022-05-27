@@ -1,0 +1,18 @@
+version: 2
+updates:
+
+  - package-ecosystem: "npm" 
+    directory: "/angular" 
+    schedule:
+      interval: "daily"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+      
+  - package-ecosystem: "npm" 
+    directory: "/react" 
+    schedule:
+      interval: "daily"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
