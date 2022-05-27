@@ -17,7 +17,7 @@
     "@angular/common": "^13.3.8",
     "@angular/core": "~13.3.8",
     "@angular/forms": "~13.3.8",
-    "@angular/platform-browser": "~13.3.8",
+    "@angular/platform-browser": "~13.3.10",
     "@angular/platform-browser-dynamic": "~13.3.8",
     "@angular/router": "~13.3.8",
     "@auth0/auth0-angular": "^1.9.0",
