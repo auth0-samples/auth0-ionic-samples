@@ -16,7 +16,7 @@
   "dependencies": {
     "@angular/common": "^13.3.10",
     "@angular/core": "~13.3.8",
-    "@angular/forms": "~13.3.10",
+    "@angular/forms": "~13.3.11",
     "@angular/platform-browser": "~13.3.10",
     "@angular/platform-browser-dynamic": "~13.3.10",
     "@angular/router": "~13.3.10",
