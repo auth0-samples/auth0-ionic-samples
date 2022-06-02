@@ -14,10 +14,10 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/common": "^13.3.10",
+    "@angular/common": "^13.3.11",
     "@angular/core": "~13.3.8",
     "@angular/forms": "~13.3.11",
-    "@angular/platform-browser": "~13.3.10",
+    "@angular/platform-browser": "~13.3.11",
     "@angular/platform-browser-dynamic": "~13.3.11",
     "@angular/router": "~13.3.11",
     "@auth0/auth0-angular": "^1.9.0",
@@ -29,7 +29,7 @@
     "@capacitor/ios": "^3.5.0",
     "@capacitor/keyboard": "^1.2.2",
     "@capacitor/status-bar": "^1.0.8",
-    "@ionic/angular": "^6.1.7",
+    "@ionic/angular": "^6.1.8",
     "rxjs": "^7.5.5",
     "tslib": "^2.4.0",
     "zone.js": "~0.11.4"
