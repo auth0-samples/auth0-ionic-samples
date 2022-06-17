@@ -67,3 +67,4 @@ workflows:
     jobs:
       - build-angular
       - build-react
+      - build-vue
