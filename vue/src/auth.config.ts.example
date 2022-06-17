@@ -1,4 +1,4 @@
-import { isPlatform } from "@ionic/react";
+import { isPlatform } from "@ionic/vue";
 
 export const domain = "{DOMAIN}";
 export const clientId = "{CLIENT_ID}";
