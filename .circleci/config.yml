@@ -55,6 +55,13 @@ jobs:
       - build-node:
           working_directory: react
           config_path: src
+  build-vue:
+    executor:
+      name: build-executor
+    steps:
+      - build-node:
+          working_directory: vue
+          config_path: src
 workflows:
   build-samples:
     jobs:
