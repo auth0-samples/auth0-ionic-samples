@@ -13,7 +13,7 @@
     "@capacitor/keyboard": "^1.2.3",
     "@capacitor/status-bar": "^1.0.8",
     "@ionic/react": "^6.1.10",
-    "@ionic/react-router": "^6.1.11",
+    "@ionic/react-router": "^6.2.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^14.3.0",
