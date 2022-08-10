@@ -21,15 +21,14 @@ const config: AuthConfig = {
 };
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot(),
-    AppRoutingModule,
-    AuthModule.forRoot(config),
-  ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent],
+    imports: [
+        BrowserModule,
+        IonicModule.forRoot(),
+        AppRoutingModule,
+        AuthModule.forRoot(config),
+    ],
+    providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}
