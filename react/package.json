@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^1.10.2",
-    "@capacitor/android": "^4.0.0",
+    "@capacitor/android": "^4.1.0",
     "@capacitor/app": "^4.0.0",
     "@capacitor/browser": "^4.0.0",
     "@capacitor/core": "^4.0.0",
