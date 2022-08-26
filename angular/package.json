@@ -18,7 +18,7 @@
     "@angular/core": "^14.1.1",
     "@angular/forms": "^14.1.1",
     "@angular/platform-browser": "^14.1.1",
-    "@angular/platform-browser-dynamic": "^14.1.1",
+    "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.1.1",
     "@auth0/auth0-angular": "^1.10.0",
     "@capacitor/android": "^4.1.0",
