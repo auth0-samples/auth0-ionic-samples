@@ -9,7 +9,7 @@
     "@capacitor/browser": "^4.0.0",
     "@capacitor/core": "^4.3.0",
     "@capacitor/haptics": "^4.0.0",
-    "@capacitor/ios": "^4.3.0",
+    "@capacitor/ios": "^4.4.0",
     "@capacitor/keyboard": "^4.0.0",
     "@capacitor/status-bar": "^4.0.0",
     "@ionic/react": "^6.3.0",
@@ -69,7 +69,7 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "^4.3.0"
+    "@capacitor/cli": "^4.4.0"
   },
   "description": "An Ionic project"
 }
