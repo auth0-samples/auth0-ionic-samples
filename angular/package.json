@@ -23,7 +23,7 @@
     "@auth0/auth0-angular": "^1.11.0",
     "@capacitor/android": "^4.5.0",
     "@capacitor/app": "^4.1.0",
-    "@capacitor/browser": "^4.0.0",
+    "@capacitor/browser": "^4.1.0",
     "@capacitor/core": "^4.5.0",
     "@capacitor/haptics": "^4.1.0",
     "@capacitor/ios": "^4.5.0",
