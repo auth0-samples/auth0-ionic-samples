@@ -12,7 +12,7 @@
     "@capacitor/ios": "^4.5.0",
     "@capacitor/keyboard": "^4.1.0",
     "@capacitor/status-bar": "^4.1.0",
-    "@ionic/react": "^6.3.0",
+    "@ionic/react": "^6.3.3",
     "@ionic/react-router": "^6.3.3",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.4.0",
