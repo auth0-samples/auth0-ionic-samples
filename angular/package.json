@@ -29,7 +29,7 @@
     "@capacitor/ios": "^4.5.0",
     "@capacitor/keyboard": "^4.1.0",
     "@capacitor/status-bar": "^4.1.0",
-    "@ionic/angular": "^6.3.8",
+    "@ionic/angular": "^6.4.0",
     "rxjs": "^7.5.7",
     "tslib": "^2.4.1",
     "zone.js": "~0.12.0"
