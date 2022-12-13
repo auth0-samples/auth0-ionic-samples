@@ -1,8 +1,10 @@
 version: 2.1
+orbs:
+  browser-tools: circleci/browser-tools@1.1.0
 executors:
   build-executor:
     docker:
-      - image: circleci/node:16.10.0-browsers
+      - image: cimg/node:lts-browsers
 commands:
   build-node:
     parameters:
@@ -15,7 +17,11 @@ commands:
         default: npm test
     description: "Builds and tests a node project"
     steps:
+      - browser-tools/install-browser-tools
       - checkout
+      - run: |
+          node --version
+          google-chrome --version
       - restore_cache:
           key: dependencies-{{ .Branch }}-{{ checksum "<< parameters.working_directory >>/package-lock.json" }}
       - run:
