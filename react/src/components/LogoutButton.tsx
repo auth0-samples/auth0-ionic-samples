@@ -4,15 +4,20 @@ import { IonButton } from "@ionic/react";
 import { callbackUri } from "../auth.config";
 
 const LogoutButton: React.FC = () => {
-  const { buildLogoutUrl, logout } = useAuth0();
+  const { logout } = useAuth0();
 
   const doLogout = async () => {
-    await Browser.open({
-      url: buildLogoutUrl({ returnTo: callbackUri }),
-      windowName: "_self",
+    await logout({
+      async openUrl(url) {
+        await Browser.open({
+          url,
+          windowName: "_self",
+        });
+      },
+      logoutParams: {
+        returnTo: callbackUri
+      }
     });
-
-    logout({ localOnly: true });
   };
 
   return <IonButton onClick={doLogout}>Log out</IonButton>;
