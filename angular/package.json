@@ -41,7 +41,7 @@
     "@angular-eslint/eslint-plugin-template": "^15.1.0",
     "@angular-eslint/template-parser": "^15.1.0",
     "@angular/cli": "^15.0.3",
-    "@angular/compiler": "^15.0.3",
+    "@angular/compiler": "^15.1.0",
     "@angular/compiler-cli": "^15.0.3",
     "@angular/language-service": "^15.0.3",
     "@capacitor/cli": "^4.5.0",
