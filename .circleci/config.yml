@@ -18,7 +18,6 @@ commands:
     description: "Builds and tests a node project"
     steps:
       - browser-tools/install-browser-tools
-      - checkout
       - run: |
           node --version
           google-chrome --version
