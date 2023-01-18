@@ -1,8 +1,10 @@
 version: 2.1
+orbs:
+  browser-tools: circleci/browser-tools@1.1.0
 executors:
   build-executor:
     docker:
-      - image: circleci/node:16.10.0-browsers
+      - image: cimg/node:lts-browsers
 commands:
   build-node:
     parameters:
@@ -15,7 +17,10 @@ commands:
         default: npm test
     description: "Builds and tests a node project"
     steps:
-      - checkout
+      - browser-tools/install-browser-tools
+      - run: |
+          node --version
+          google-chrome --version
       - restore_cache:
           key: dependencies-{{ .Branch }}-{{ checksum "<< parameters.working_directory >>/package-lock.json" }}
       - run:
@@ -40,10 +45,21 @@ commands:
           command: << parameters.test_cmd >>
           working_directory: << parameters.working_directory >>
 jobs:
+  checkout:
+    executor:
+      name: build-executor
+    steps:
+      - checkout
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
   build-angular:
     executor:
       name: build-executor
     steps:
+      - attach_workspace:
+          at: .
       - build-node:
           working_directory: angular
           config_path: src/app
@@ -52,6 +68,8 @@ jobs:
     executor:
       name: build-executor
     steps:
+      - attach_workspace:
+          at: .
       - build-node:
           working_directory: react
           config_path: src
@@ -65,6 +83,13 @@ jobs:
 workflows:
   build-samples:
     jobs:
-      - build-angular
-      - build-react
-      - build-vue
+      - checkout
+      - build-angular:
+          requires:
+            - checkout
+      - build-react:
+          requires:
+            - checkout
+      - build-vue:
+          requires:
+            - checkout
