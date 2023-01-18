@@ -77,6 +77,8 @@ jobs:
     executor:
       name: build-executor
     steps:
+      - attach_workspace:
+          at: .
       - build-node:
           working_directory: vue
           config_path: src
