@@ -78,9 +78,9 @@ workflows:
   build-samples:
     jobs:
       - checkout
-      - build-angular
+      - build-angular:
           requires:
             - checkout
-      - build-react
+      - build-react:
           requires:
             - checkout
