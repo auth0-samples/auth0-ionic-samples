@@ -13,7 +13,7 @@ const LoginButton: React.FC = () => {
           windowName: "_self"
         });
       }
-    })
+    });
   };
 
   return <IonButton onClick={login}>Log in</IonButton>;
