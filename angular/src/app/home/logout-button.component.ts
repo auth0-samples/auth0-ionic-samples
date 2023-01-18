@@ -15,13 +15,14 @@ export class LogoutButtonComponent implements OnInit {
 
   logout() {
     this.auth
-      .buildLogoutUrl({ returnTo: callbackUri })
-      .pipe(
-        mergeMap(async (url) => {
-          await Browser.open({ url, windowName: '_self' });
-          this.auth.logout({ localOnly: true });
-        })
-      )
+      .logout({
+        logoutParams: {
+          returnTo: callbackUri,
+        },
+        async openUrl(url: string) {
+          return Browser.open({ url, windowName: '_self' });
+        }
+      })
       .subscribe();
   }
 }
