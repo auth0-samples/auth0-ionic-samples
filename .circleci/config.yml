@@ -73,6 +73,15 @@ jobs:
       - build-node:
           working_directory: react
           config_path: src
+  build-vue:
+    executor:
+      name: build-executor
+    steps:
+      - attach_workspace:
+          at: .
+      - build-node:
+          working_directory: vue
+          config_path: src
 workflows:
   build-samples:
     jobs:
@@ -81,5 +90,8 @@ workflows:
           requires:
             - checkout
       - build-react:
+          requires:
+            - checkout
+      - build-vue:
           requires:
             - checkout
