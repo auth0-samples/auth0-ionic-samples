@@ -46,10 +46,21 @@ commands:
           command: << parameters.test_cmd >>
           working_directory: << parameters.working_directory >>
 jobs:
+  checkout:
+    executor:
+      name: build-executor
+    steps:
+      - checkout
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
   build-angular:
     executor:
       name: build-executor
     steps:
+      - attach_workspace:
+          at: .
       - build-node:
           working_directory: angular
           config_path: src/app
@@ -58,11 +69,18 @@ jobs:
     executor:
       name: build-executor
     steps:
+      - attach_workspace:
+          at: .
       - build-node:
           working_directory: react
           config_path: src
 workflows:
   build-samples:
     jobs:
+      - checkout
       - build-angular
+          requires:
+            - checkout
       - build-react
+          requires:
+            - checkout
