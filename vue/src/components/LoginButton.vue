@@ -13,11 +13,16 @@ export default defineComponent({
     IonButton,
   },
   setup() {
-    const { buildAuthorizeUrl } = useAuth0();
+    const { loginWithRedirect } = useAuth0();
 
     const login = async () => {
-      const url = await buildAuthorizeUrl();
-      await Browser.open({ url, windowName: "_self" });
+      await loginWithRedirect({
+        openUrl: (url: string) =>
+          Browser.open({
+            url,
+            windowName: "_self",
+          }),
+      });
     };
 
     return { login };

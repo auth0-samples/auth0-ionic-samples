@@ -31,8 +31,10 @@ const app = createApp(App).use(IonicVue).use(router);
 app.use(
   createAuth0({
     domain: auth0Domain,
-    client_id: clientId,
-    redirect_uri: callbackUri,
+    clientId: clientId,
+    authorizationParams: {
+      redirect_uri: callbackUri,
+    }
   })
 );
 
