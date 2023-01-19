@@ -13,8 +13,11 @@ export class LoginButtonComponent implements OnInit {
 
   login() {
     this.auth
-      .buildAuthorizeUrl()
-      .pipe(mergeMap((url) => Browser.open({ url, windowName: '_self' })))
+      .loginWithRedirect({
+        async openUrl(url: string) {
+          return Browser.open({ url, windowName: '_self' });
+        }
+      })
       .subscribe();
   }
 }
