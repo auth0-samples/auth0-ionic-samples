@@ -12,7 +12,9 @@ ReactDOM.render(
     <Auth0Provider
       domain={auth0Domain}
       clientId={clientId}
-      redirectUri={callbackUri}
+      authorizationParams={{
+        redirect_uri: callbackUri
+      }}
       /* Uncomment the following lines for better support  in browers like Safari where third-party cookies are blocked.
          See https://auth0.com/docs/libraries/auth0-single-page-app-sdk#change-storage-options for risks. */
       // cacheLocation="localstorage",
