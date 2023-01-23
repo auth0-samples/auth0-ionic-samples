@@ -17,7 +17,7 @@ export default defineComponent({
     const { logout } = useAuth0();
 
     const onLogout = async () => {
-      logout({
+      await logout({
         logoutParams: {
           returnTo: callbackUri,
         },
