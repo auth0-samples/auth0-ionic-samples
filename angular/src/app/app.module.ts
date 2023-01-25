@@ -12,14 +12,12 @@ import { domain, clientId, callbackUri } from './auth.config';
 const config: AuthConfig = {
   domain,
   clientId,
+  cacheLocation: 'localstorage',
+  useRefreshTokens: true,
+  useRefreshTokensFallback: false,
   authorizationParams: {
     redirect_uri: callbackUri
   }
-  /* Uncomment the following lines for better support  in browers like Safari where third-party cookies are blocked.
-    See https://auth0.com/docs/libraries/auth0-single-page-app-sdk#change-storage-options for risks.
-  */
-  // cacheLocation: "localstorage",
-  // useRefreshTokens: true
 };
 
 @NgModule({
