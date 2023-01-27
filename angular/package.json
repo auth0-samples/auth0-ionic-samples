@@ -31,7 +31,7 @@
     "@capacitor/status-bar": "^4.1.0",
     "@ionic/angular": "^6.3.8",
     "rxjs": "^7.8.0",
-    "tslib": "^2.4.1",
+    "tslib": "^2.5.0",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {
