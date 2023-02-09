@@ -39,13 +39,15 @@ export const clientId = "{CLIENT_ID}";
 Add the following to your **Allowed Callback URLs** settings:
 
 ```text
-com.auth0.samples://{DOMAIN}/capacitor/com.auth0.samples/callback
+com.auth0.samples://{DOMAIN}/capacitor/com.auth0.samples/callback, 
+http://localhost:3000
 ```
 
 Add the following to your **Allowed Logout URLs** settings:
 
 ```text
-com.auth0.samples://{DOMAIN}/capacitor/com.auth0.samples/callback
+com.auth0.samples://{DOMAIN}/capacitor/com.auth0.samples/callback, 
+http://localhost:3000
 ```
 
 If running on a desktop browser, add the following to your **Allowed Web Origins** settings:
