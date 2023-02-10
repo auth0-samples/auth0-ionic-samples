@@ -39,13 +39,13 @@ export const clientId = "{CLIENT_ID}";
 If running on a mobile device, add the following to your **Allowed Callback URLs** settings:
 
 ```text
-com.auth0.samples://{DOMAIN}/capacitor/com.auth0.samples/callback, 
+com.auth0.samples://{DOMAIN}/capacitor/com.auth0.samples/callback
 ```
 
 If running on a mobile device, add the following to your **Allowed Logout URLs** settings:
 
 ```text
-com.auth0.samples://{DOMAIN}/capacitor/com.auth0.samples/callback, 
+com.auth0.samples://{DOMAIN}/capacitor/com.auth0.samples/callback
 ```
 
 If running on a mobile device, add the following to your **Allowed Origins (CORS)** settings:
