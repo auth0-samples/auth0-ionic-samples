@@ -7,7 +7,7 @@ const appId = "com.auth0.samples";
 // Use `auth0Domain` in string interpolation below so that it doesn't
 // get replaced by the quickstart auto-packager
 const auth0Domain = domain;
-const iosOrAndroid = isPlatform('ios') || isPlatform('android');
+const iosOrAndroid = isPlatform('hybrid');
 
 export const callbackUri = iosOrAndroid
   ? `${appId}://${auth0Domain}/capacitor/${appId}/callback`
