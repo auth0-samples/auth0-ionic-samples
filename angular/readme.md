@@ -32,28 +32,40 @@ export const clientId = '{CLIENT_ID}';
 
 ### Configure the Auth0 Application
 
-Add the following to your **Allowed Callback URLs** settings:
+If running on a mobile device, add the following to your **Allowed Callback URLs** settings:
 
 ```text
 com.auth0.samples://{DOMAIN}/capacitor/com.auth0.samples/callback
 ```
 
-Add the following to your **Allowed Logout URLs** settings:
+If running on a mobile device, add the following to your **Allowed Logout URLs** settings:
 
 ```text
 com.auth0.samples://{DOMAIN}/capacitor/com.auth0.samples/callback
-```
-
-If running on a desktop browser, add the following to your **Allowed Web Origins** settings:
-
-```
-http://localhost:4200
 ```
 
 If running on a mobile device, add the following to your **Allowed Origins (CORS)** settings:
 
 ```
 capacitor://localhost, http://localhost
+```
+
+If running on a desktop browser, add the following to your **Allowed Callback URLs** settings:
+
+```
+http://localhost:4200
+```
+
+If running on a desktop browser, add the following to your **Allowed Logout URLs** settings:
+
+```
+http://localhost:4200
+```
+
+If running on a desktop browser, add the following to your **Allowed Web Origins** settings:
+
+```
+http://localhost:4200
 ```
 
 ### Run on the desktop
