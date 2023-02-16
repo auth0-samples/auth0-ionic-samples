@@ -36,7 +36,7 @@ app.use(
       redirect_uri: callbackUri,
     },
     // For using Auth0-Vue with Ionic on Android and iOS,
-    // it's important to use refreshtokens without the falback
+    // it's important to use refresh tokens without the falback
     useRefreshTokens: true,
     useRefreshTokensFallback: false
   })
