@@ -13,13 +13,12 @@ const config: AuthConfig = {
   domain,
   clientId,
   authorizationParams: {
-    redirect_uri: callbackUri
-  }
-  /* Uncomment the following lines for better support  in browers like Safari where third-party cookies are blocked.
-    See https://auth0.com/docs/libraries/auth0-single-page-app-sdk#change-storage-options for risks.
-  */
-  // cacheLocation: "localstorage",
-  // useRefreshTokens: true
+    redirect_uri: callbackUri,
+  },
+  // For using Auth0-Angular with Ionic on Android and iOS,
+  // it's important to use refresh tokens without the falback
+  useRefreshTokens: true,
+  useRefreshTokensFallback: false,
 };
 
 @NgModule({
