@@ -9,7 +9,7 @@
     "@capacitor/browser": "^4.1.0",
     "@capacitor/core": "^4.7.0",
     "@capacitor/haptics": "^4.1.0",
-    "@capacitor/ios": "^4.5.0",
+    "@capacitor/ios": "^4.7.0",
     "@capacitor/keyboard": "^4.1.0",
     "@capacitor/status-bar": "^4.1.0",
     "@ionic/react": "^6.5.0",
