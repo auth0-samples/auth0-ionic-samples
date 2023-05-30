@@ -40,7 +40,7 @@
     "workbox-navigation-preload": "^6.6.1",
     "workbox-precaching": "^6.6.0",
     "workbox-range-requests": "^6.6.1",
-    "workbox-routing": "^6.5.4",
+    "workbox-routing": "^6.6.1",
     "workbox-strategies": "^6.5.4",
     "workbox-streams": "^6.6.0"
   },
