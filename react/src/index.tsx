@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot} from "react-dom/client";
 import { Auth0Provider } from "@auth0/auth0-react";
 
 import App from "./App";
@@ -7,7 +7,9 @@ import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import { domain as auth0Domain, clientId, callbackUri } from "./auth.config";
 
-ReactDOM.render(
+const root = createRoot(document.getElementById("root") as HTMLElement);
+
+root.render(
   <React.StrictMode>
     <Auth0Provider
       domain={auth0Domain}
@@ -22,8 +24,7 @@ ReactDOM.render(
     >
       <App />
     </Auth0Provider>
-  </React.StrictMode>,
-  document.getElementById("root")
+  </React.StrictMode>
 );
 
 // If you want your app to work offline and load faster, you can change
