@@ -50,9 +50,9 @@ body:
       required: false
 
   - type: dropdown
-    id: environment-framework
+    id: environment-sample
     attributes:
-      label: Framework
+      label: Sample
       multiple: false
       options:
         - React
