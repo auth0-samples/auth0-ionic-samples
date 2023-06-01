@@ -57,6 +57,7 @@ body:
       options:
         - React
         - Angular
+        - Vue
     validations:
       required: true
 
