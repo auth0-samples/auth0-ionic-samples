@@ -1,0 +1,47 @@
+name: Build package
+description: Build the SDK package
+
+inputs:
+  node:
+    description: The node version to use
+    required: false
+    default: 18
+  working_directory:
+    description: The current working directory
+    required: true
+  config_path:
+    description: The path to the configuration file
+    required: true
+  test_cmd:
+    description: The command to run the tests
+    required: true
+    default: npm test
+
+runs:
+  using: composite
+
+  steps:
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ inputs.node }}
+        cache: 'npm'
+
+    - name: Install dependencies
+      shell: bash
+      run: npm ci
+
+    - name: Copy config
+      shell: bash
+      run: |
+        cp ${{ inputs.working_directory }}/${{ inputs.config_path }}/auth.config.ts.example ${{ inputs.working_directory }}/${{ inputs.config_path }}/auth.config.ts
+
+    - name: Build
+      shell: bash
+      run: npm run build
+      working-directory: ${{ inputs.working_directory }}
+
+    - name: Tests
+      shell: bash
+      run: ${{ inputs.test_cmd }}
+      working-directory: ${{ inputs.working_directory }}
