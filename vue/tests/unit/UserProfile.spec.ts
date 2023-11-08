@@ -1,23 +1,25 @@
 import { mount } from "@vue/test-utils";
+import { describe, expect, Mock, test, vi } from "vitest";
+
 import UserProfile from "../../src/components/UserProfile.vue";
 import { useAuth0 } from "@auth0/auth0-vue";
 
-jest.mock("@auth0/auth0-vue", () => ({
-  useAuth0: jest.fn(),
+vi.mock("@auth0/auth0-vue", () => ({
+  useAuth0: vi.fn(),
 }));
 
 function mockIt(obj: object) {
-  (useAuth0 as jest.Mock).mockImplementation(() => obj);
+  (useAuth0 as Mock).mockImplementation(() => obj);
 }
 
 describe("Render profile", () => {
-  it("displays loading", () => {
+  test("displays loading", () => {
     mockIt({ user: null, isLoading: true });
     const wrapper = mount(UserProfile);
     expect(wrapper.html()).toContain("Loading ...");
   });
 
-  it("is blank when no user", () => {
+  test("is blank when no user", () => {
     mockIt({ user: null, isLoading: false });
     const wrapper = mount(UserProfile);
     expect(wrapper.html()).toContain("<div></div>");

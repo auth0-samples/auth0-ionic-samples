@@ -1,4 +1,5 @@
 import { mount } from "@vue/test-utils";
+import { expect, test, vi } from "vitest";
 import App from "../../src/App.vue";
 import router from "../../src/router";
 
@@ -7,8 +8,8 @@ const user = {
   email: "johndoe@me.com",
 };
 
-jest.mock("@auth0/auth0-vue", () => ({
-  useAuth0: jest.fn(() => {
+vi.mock("@auth0/auth0-vue", () => ({
+  useAuth0: vi.fn(() => {
     return {
       handleRedirectCallback: async () => null,
       buildAuthorizeUrl: async () => null,
