@@ -9,7 +9,6 @@ on:
   push:
     branches:
       - main
-      - feat/github-actions
 
 permissions:
   contents: read
