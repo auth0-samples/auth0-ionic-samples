@@ -1,5 +1,5 @@
 name: Build package
-description: Build the SDK package
+description: Build the example application
 
 inputs:
   node:
