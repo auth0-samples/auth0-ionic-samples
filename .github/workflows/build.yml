@@ -65,7 +65,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha || github.ref }}
   
-      - name: Build React
+      - name: Build Vue
         uses: ./.github/actions/build
         with:
           node: ${{ env.NODE_VERSION }}
