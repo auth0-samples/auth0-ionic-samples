@@ -30,6 +30,7 @@ runs:
     - name: Install dependencies
       shell: bash
       run: npm ci
+      working-directory: ${{ inputs.working_directory }}
 
     - name: Copy config
       shell: bash
