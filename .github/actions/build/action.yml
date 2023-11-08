@@ -1,4 +1,4 @@
-name: Build package
+name: Build application
 description: Build the example application
 
 inputs:
