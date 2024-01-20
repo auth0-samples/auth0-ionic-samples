@@ -35,7 +35,7 @@
     "eslint": "^8.53.0",
     "eslint-plugin-vue": "^9.18.1",
     "typescript": "^5.2.2",
-    "vite": "4.5.1",
+    "vite": "4.5.2",
     "vitest": "^0.34.6"
   },
   "description": "An Ionic project"
